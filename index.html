@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لعبة لودو</title>
+<style>
+body{margin:0;background:#10251d;color:white;font-family:Arial;text-align:center;padding:18px}
+h1{color:#ffd45c} .board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:360px;margin:24px auto}
+.home{height:105px;border-radius:15px;display:grid;place-items:center;font-size:22px;font-weight:bold}
+.red{background:#c93636}.green{background:#238e58}.yellow{background:#d9ae24;color:#222}.blue{background:#2878cf}
+.center{background:#f2e8cc;color:#333;border-radius:12px;display:grid;place-items:center;font-size:35px}
+button{padding:14px 22px;border:0;border-radius:12px;background:#ffd45c;font-size:18px;font-weight:bold}
+#result{font-size:22px;margin:20px}
+</style>
+</head>
+<body>
+<h1>🎲 لعبة لودو</h1>
+<p>نسخة تجريبية محلية — لاعب واحد للتجربة</p>
+<div class="board">
+<div class="home red">🔴 أحمر<br><span id="r">0</span></div>
+<div class="home yellow">🟡 أصفر<br><span id="y">0</span></div>
+<div class="home blue">🔵 أزرق<br><span id="b">0</span></div>
+<div class="center">🎲</div>
+<div class="home green">🟢 أخضر<br><span id="g">0</span></div>
+</div>
+<div id="result">اضغط على النرد للبدء</div>
+<button onclick="roll()">🎲 ارْمِ النرد</button>
+<script>
+let turns=0;
+function roll(){
+let n=Math.floor(Math.random()*6)+1;
+document.getElementById('result').textContent='نتيجتك: '+n;
+let ids=['r','y','b','g'];
+let id=ids[turns%4];
+document.getElementById(id).textContent=Number(document.getElementById(id).textContent)+n;
+turns++;
+}
+</script>
+</body>
+</html>
